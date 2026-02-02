@@ -1,0 +1,186 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3P 2025/2026 space adventure</title>
+    
+    <style>
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        header {
+            border-bottom: 3px solid #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        h1 {
+	color: #2c3e50;
+	}
+        h2 {
+	color: #2980b9; border-left: 5px solid #2980b9; padding-left: 10px; margin-top: 30px;
+	}
+        .section-content {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        } /*c'est comme une fonction qu'on pourra rappeler plus tard pour réutiliser le style du site*/
+        .meta-info {
+		font-style: Tahoma, Geneva, Verdana, sans-serif; color: #7f8c8d;
+	}
+	button {
+    		padding: 10px 20px;
+            	border: none;
+            	cursor: pointer;
+            	font-weight: bold;
+            	margin: 5px;
+            	transition: 0.3s;
+            	color: white;
+            	border-radius: 4px;
+            	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+	}
+
+	button:hover {
+	    opacity: 0.8; /* Le bouton devient un peu transparent quand on passe la souris dessus */
+	}
+	.button-gagné { background: rgb(28, 184, 65); }
+        .button-perdu { background: rgb(202, 60, 60); }
+        .button-pas-encore { background: rgb(66, 184, 221); }
+	 span[id^="score"] {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+	button:active {
+    	transform: translateY(2px);
+    	filter: brightness(1.2);
+	}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>A3P 2025/2026 space adventure</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>I.A) Auteur(s)</h2>
+            <div class="section-content">
+                <p>@yohannhesbert<br />
+		@yohann.hesbert@edu.esiee.fr
+		</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>I.B) Thème</h2>
+            <div class="section-content">
+                <p class="meta-info">Référence : Exercice 7.1.1</p>
+                <p>Décrivez ici le thème principal de votre projet.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>I.C) Résumé du scénario complet</h2>
+            <div class="section-content">
+                <p class="meta-info">Référence : Exercice 7.3.1</p>
+                <p>Insérez ici le résumé global de l'intrigue ou du fonctionnement de votre système.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>I.D) Plan complet</h2>
+            <div class="section-content">
+                <p class="meta-info">Référence : Exercice 7.3.2</p>
+                <ul>
+                    <li>Partie 1 : Introduction</li>
+                    <li>Partie 2 : Analyse</li>
+                    <li>Partie 3 : Développement</li>
+                    <li>Partie 4 : Conclusion</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>II) Développement Technique</h2>
+            <div class="section-content">
+                <p>à remplir après le développement du jeu</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>III) Annexes & Ressources</h2>
+            <div class="section-content">
+                <p>sources potentiels?<br />
+		<a href="https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Properties/font-family">- CSS</a>
+		</p>
+            </div>
+        </section>
+	<section>
+            <h2>Statistiques de mission</h2>
+            <div class="section-content" style="text-align: center;">
+                <button class="button-gagné" onclick="ajouter('score-gagné')">
+                    Gagné : <span id="score-gagné">0</span>
+                </button>
+                
+                <button class="button-perdu" onclick="ajouter('score-perdu')">
+                    Perdu : <span id="score-perdu">0</span>
+                </button>
+                
+                <button class="button-pas-encore" onclick="ajouter('score-pas-encore')">
+                    En attente : <span id="score-pas-encore">0</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p style="text-align: center; margin-top: 50px; font-size: 0.8em; color: #bdc3c7;">
+            © 2026 - Projet A3P 2025/2026 space adventure
+        </p>
+    </footer>
+<script>
+    // Charger les scores au démarrage
+    window.onload = function() {
+        ['score-gagné', 'score-perdu', 'score-pas-encore'].forEach(id => {
+            let sauve = localStorage.getItem(id);
+            if (sauve) document.getElementById(id).innerText = sauve;
+        });
+    };
+
+    function ajouter(idElement) {
+        let compteur = document.getElementById(idElement);
+        let nombreActuel = parseInt(compteur.innerText);
+        
+        // On crée une clé unique pour savoir si ON a déjà cliqué sur CE bouton
+        // SessionStorage s'efface quand on ferme l'onglet
+        let aDejaClique = sessionStorage.getItem('clic-' + idElement);
+
+        if (!aDejaClique) {
+            // Premier clic : on monte de 1
+            nombreActuel++;
+            sessionStorage.setItem('clic-' + idElement, 'true');
+            // Optionnel : on change le style pour montrer que c'est actif
+            document.getElementById(idElement).parentElement.style.boxShadow = "inset 0 0 10px #000";
+        } else {
+            // Deuxième clic : on redescend de 1
+            nombreActuel--;
+            sessionStorage.removeItem('clic-' + idElement);
+            document.getElementById(idElement).parentElement.style.boxShadow = "none";
+        }
+
+        // Mise à jour affichage + sauvegarde permanente
+        compteur.innerText = nombreActuel;
+        localStorage.setItem(idElement, nombreActuel);
+    }
+</script>
+</body>
+</html>

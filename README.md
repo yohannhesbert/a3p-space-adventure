@@ -84,7 +84,8 @@
             <h2>I.B) Thème</h2>
             <div class="section-content">
                 <p class="meta-info">Référence : Exercice 7.1.1</p>
-                <p>Décrivez ici le thème principal de votre projet.</p>
+                <p>Un intrépide voyage intergalactique attend notre héros, prêt à tout pour retrouver sa bague de fiançailles. 
+				</p>
             </div>
         </section>
 
@@ -92,7 +93,7 @@
             <h2>I.C) Résumé du scénario complet</h2>
             <div class="section-content">
                 <p class="meta-info">Référence : Exercice 7.3.1</p>
-                <p>Insérez ici le résumé global de l'intrigue ou du fonctionnement de votre système.</p>
+                <p>Marc est un voyageur de l’espace qui avait pour projet de demandé sa copine en mariage malheureusement il sait fait voler sa bague, il doit alors tout mettre en œuvre pour retrouver le voleur à travers l’espace. C’est alors qu’après avoir suivis la piste du voleur il se retrouve sur une nouvelle planète nommé Frilus. Il y atterrit et découvre une civilisation extraterrestre en visitant une ville de cette planète. </p>
             </div>
         </section>
 
@@ -101,10 +102,10 @@
             <div class="section-content">
                 <p class="meta-info">Référence : Exercice 7.3.2</p>
                 <ul>
-                    <li>Partie 1 : Introduction</li>
-                    <li>Partie 2 : Analyse</li>
-                    <li>Partie 3 : Développement</li>
-                    <li>Partie 4 : Conclusion</li>
+                    <li>Partie 1 : Projet Zuul</li>
+                    <li>Partie 2 : Réponses aux exercices</li>
+                    <li>Partie 3 : Mode d’emploi </li>
+                    <li>Partie 4 : Déclaration obligatoire anti-plagiat</li>
                 </ul>
             </div>
         </section>
